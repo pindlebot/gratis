@@ -99,7 +99,8 @@ const tap = (options) => (file, index, array) => {
   let { name, base } = path.parse(file.path)
   let duplicate = array.find(entry =>
     path.basename(entry.path) === base &&
-    entry.path !== file.path
+    entry.path !== file.path &&
+    entry.type !== 'tree'
   )
   let camelCaseName = normalize.camelCase(file, options)
   file.localPath = path.join(
@@ -112,5 +113,7 @@ const tap = (options) => (file, index, array) => {
     : (name || file.path)
   return [file.path, file]
 }
+
+Tree.tap = tap
 
 module.exports = Tree

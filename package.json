@@ -12,7 +12,12 @@
   "license": "MIT",
   "scripts": {
     "lint": "standard \"src/*.js\" --fix | snazzy",
-    "test": "mocha"
+    "test": "jest"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
   },
   "dependencies": {
     "atob": "^2.1.1",
@@ -25,7 +30,9 @@
   },
   "devDependencies": {
     "eslint": "^5.0.1",
-    "mocha": "^5.2.0",
+    "jest": "^23.3.0",
+    "lodash.uniq": "^4.5.0",
+    "lodash.uniqby": "^4.7.0",
     "snazzy": "^7.1.1",
     "standard": "^11.0.1"
   }

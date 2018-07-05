@@ -70,11 +70,7 @@ const camelCase = (file, options) => {
   if (!dir) {
     return pathname
   }
-  let parts = pathname.split(path.sep)
-  if (name === 'index') {
-    parts.pop()
-  }
-  let camelCaseName = parts.map(capitalize).join('')
+  let camelCaseName = pathname.split(path.sep).map(capitalize).join('')
   return appendExtension(camelCaseName, { ext })
 }
 

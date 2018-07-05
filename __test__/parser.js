@@ -1,6 +1,4 @@
-const RePkg = require('../src/Reticent')
-const { describe, it } = require('mocha')
-const assert = require('assert')
+const RePkg = require('../src/Gratis')
 const path = require('path')
 const Asset = require('../src/Asset')
 const Tree = require('../src/Tree')
@@ -11,14 +9,12 @@ const repkg = new RePkg('https://github.com/unshift/reticent/blob/master/src/Ret
   ext: '.js'
 })
 
-describe('RePkg', () => {
-  it('should normalize options', () => {
-    assert.equal(repkg.options.dir, path.join(process.cwd(), 'dist'))
-    assert.equal(repkg.options.branch, 'master')
-    assert.equal(repkg.options.owner, 'unshift')
-    assert.equal(repkg.options.repo, 'reticent')
-    assert.equal(repkg.options.pathname, 'src/Reticent.js')
-  })
+it('should normalize options', () => {
+  expect(repkg.options.dir).toMatch(path.join(process.cwd(), 'dist'))
+  expect(repkg.options.branch).toMatch('master')
+  expect(repkg.options.owner).toMatch('unshift')
+  expect(repkg.options.repo).toMatch('reticent')
+  expect(repkg.options.pathname).toMatch('src/Reticent.js')
 })
 
 /* describe('Asset', () => {
@@ -37,13 +33,11 @@ describe('RePkg', () => {
 */
 
 describe('Tree', () => {
-  it('should be able to find the root of a repository', (done) => {
+  it('should be able to find the root of a repository', () => {
+    expect.assertions(1)
+
     let options = RePkg.normalizeOptions('https://github.com/unshift/reticent/blob/master/test/repo')
     let tree = new Tree(options)
-    tree.findRoot().then((data) => {
-      console.log(data)
-      assert.equal(3, 3)
-      done()
-    })
+    return expect(tree.findRoot()).resolves.toBeTruthy()
   })
 })

@@ -1,6 +1,4 @@
 const RE = require('../src/constants').REQUIRE_REGEX
-const { describe, it } = require('mocha')
-const assert = require('assert')
 
 const statements = [
   `import { x } from "y"`,
@@ -45,7 +43,7 @@ const expected = [
 describe('require_regex', () => {
   it('should match import and require arguments', () => {
     statements.forEach(statement => {
-      assert.equal(statement.match(RE)[0], 'y')
+      expect(statement.match(RE)[0]).toMatch('y')
     })
   })
 })
@@ -53,7 +51,7 @@ describe('require_regex', () => {
 describe('require_regex', () => {
   it('should replace import and require paths', () => {
     statements.forEach((statement, index) => {
-      assert.equal(statement.replace(RE, 'z'), expected[index])
+      expect(statement.replace(RE, 'z')).toMatch(expected[index])
     })
   })
 })
