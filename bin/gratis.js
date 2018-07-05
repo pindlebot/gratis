@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const yargs = require('yargs')
+const path = require('path')
 
 const _ = yargs
   .option('dir', {
@@ -16,6 +17,8 @@ const _ = yargs
     type: 'string'
   })
   .command('$0 <url>', '', () => {}, async (argv) => {
+    require('dotenv').config({path: path.join(process.cwd(), '.env')})
+
     const Packager = require('../src')
     const { dir, flatten, ext } = argv
     await new Packager(argv.url, { dir, flatten, ext }).start()

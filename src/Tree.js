@@ -1,4 +1,3 @@
-require('dotenv').config()
 const fetch = require('node-fetch')
 const atob = require('atob')
 const path = require('path')
