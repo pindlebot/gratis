@@ -1,0 +1,31 @@
+{
+  "name": "gratis",
+  "version": "0.0.2",
+  "main": "src/index.js",
+  "bin": {
+    "gratis": "bin/gratis.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unshift/gratis.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "lint": "standard \"src/*.js\" --fix | snazzy",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "atob": "^2.1.1",
+    "fs-extra": "^6.0.1",
+    "node-fetch": "^2.1.2",
+    "url": "^0.11.0",
+    "yargs": "^12.0.1"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0",
+    "eslint": "^5.0.1",
+    "mocha": "^5.2.0",
+    "snazzy": "^7.1.1",
+    "standard": "^11.0.1"
+  }
+}
